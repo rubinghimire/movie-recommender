@@ -8,7 +8,7 @@ function getRecommendations() {
     // Get the user input (movie title)
     const movieTitle = movieInput.value.trim();
     // Ask user to wait
-    message.innerText = 'Please wait for the server\'s response.';
+    message.innerText = 'Please wait for the server\'s response';
 
     // Check if the input is empty
     if (!movieTitle) {
