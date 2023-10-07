@@ -13,7 +13,7 @@ function getRecommendations() {
     }
 
     // Make an AJAX request to the backend (replace 'backend_url' with your actual backend URL)
-    fetch('https://movie-recommender-z51m.onrender.com/recommend/${movieTitle}')
+    fetch(`https://movie-recommender-z51m.onrender.com/recommend/${movieTitle}`)
         .then(response => response.json())
         .then(data => {
             // Display recommendations in the recommendationsDiv
