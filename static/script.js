@@ -1,5 +1,5 @@
 // Function to make an AJAX request to the backend and display recommendations
-document.addEventListener('DOMContentLoaded', function getRecommendations() {
+function getRecommendations() {
     console.log('Function called');
     const movieInput = document.getElementById('movieInput');
     const recommendationsDiv = document.getElementById('recommendations');
@@ -28,4 +28,4 @@ document.addEventListener('DOMContentLoaded', function getRecommendations() {
         .catch(error => {
             console.error('Error:', error);
         });
-});
+}
