@@ -2,10 +2,15 @@
 function getRecommendations() {
     console.log('Function called');
     const movieInput = document.getElementById('movieInput');
+    const searchBox = document.getElementByClass('search-box');
     const recommendationsDiv = document.getElementById('recommendations');
 
     // Get the user input (movie title)
     const movieTitle = movieInput.value.trim();
+
+    // Append message for user
+    const element = "<h4>Please wait for the server's response.</h4>";
+    searchBox.insertAdjacentHTML("afterend", element);
 
     // Check if the input is empty
     if (!movieTitle) {
@@ -13,8 +18,9 @@ function getRecommendations() {
         return;
     }
 
-    // Make an AJAX request to the backend (replace 'backend_url' with your actual backend URL)
-    fetch(`https://movie-recommender-z51m.onrender.com/recommend/${movieTitle}`)
+    // Make an AJAX request to the backend (replace URL with your actual backend URL)
+    // https://movie-recommender-z51m.onrender.com
+    fetch(`https://localhost:5000/recommend/${movieTitle}`)
         .then(response => response.json())
         .then(data => {
             // Display recommendations in the recommendationsDiv
