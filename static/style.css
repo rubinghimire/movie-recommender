@@ -23,6 +23,10 @@ main {
     border-radius: 5px;
 }
 
+h5 {
+    margin: 0;
+}
+
 .search-box {
     display: flex;
     align-items: center;
