@@ -50,6 +50,7 @@ def recommend_movies(ratings_df, movie_name):
         user_ratings = user_ratings.sort_values(by='rating', ascending=False)
         recommended_movies.extend(user_ratings.iloc[:5]['title'].values)
 
+    recommended_movies = np.unique(recommended_movies)
     return recommended_movies
 
 
