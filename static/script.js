@@ -7,7 +7,7 @@ function getRecommendations() {
     // Get the user input (movie title)
     const movieTitle = movieInput.value.trim();
 
-    if(movieInput.includes('(')){
+    if(movieTitle.includes('(')){
         // Ask user to wait
         message.innerText = 'Please wait for your recommendations';
     } else {
