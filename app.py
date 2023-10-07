@@ -13,6 +13,11 @@ def load_data():
     return movies_df, ratings_df
 
 
+@app.route('/')
+def index():
+    return "Welcome to the Movie Recommender!"
+
+
 def find_movie_in_database(movies_df, movie_name):
     return movies_df[movies_df['title'].str.lower() == movie_name.lower()]
 
