@@ -2,19 +2,22 @@
 function getRecommendations() {
     console.log('Function called');
     const movieInput = document.getElementById('movieInput');
-    const button = document.getElementsByTagName('button')[0];
+    const searchBox = document.querySelector('.search-box');
     const recommendationsDiv = document.getElementById('recommendations');
+    const button = document.querySelector('.search-box button');
 
     // Get the user input (movie title)
     const movieTitle = movieInput.value.trim();
 
-    // Append message for user
-    const element = "<h4>Please wait for the server's response.</h4>";
-    button.insertAdjacentHTML("afterend", element);
+    // Create and append a loading message element
+    const loadingMessage = document.createElement('h4');
+    loadingMessage.innerText = 'Please wait for the server\'s response.';
+    searchBox.appendChild(loadingMessage);
 
     // Check if the input is empty
     if (!movieTitle) {
         alert('Please enter a movie title.');
+        loadingMessage.remove(); // Remove the loading message
         return;
     }
 
@@ -22,6 +25,9 @@ function getRecommendations() {
     fetch(`https://movie-recommender-z51m.onrender.com/recommend/${movieTitle}`)
         .then(response => response.json())
         .then(data => {
+            // Remove the loading message
+            loadingMessage.remove();
+
             // Display recommendations in the recommendationsDiv
             recommendationsDiv.innerHTML = '';
             data.recommendations.forEach((recommendation, index) => {
@@ -31,7 +37,7 @@ function getRecommendations() {
             });
         })
         .catch(error => {
-            console.error('Error:', error);
+            // Update the loading message with the error
+            loadingMessage.innerText = 'Error: ' + error;
         });
-        element.remove();
 }
