@@ -56,8 +56,13 @@ def recommend_movies(ratings_df, movie_name):
     return recommended_movies
 
 
-@app.route("/recommend/<movie_name>")
+@app.route("/recommend/<movie_name>", methods=['GET', 'OPTIONS'])
 def recommend_movies_based_on_genres(movie_name):
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        return response
+
     movies_df, ratings_df = load_data()
     movie_in_db = find_movie_in_database(movies_df, movie_name)
 
