@@ -13,7 +13,7 @@ function getRecommendations() {
     }
 
     // Make an AJAX request to the backend (replace 'backend_url' with your actual backend URL)
-    fetch('backend_url/recommend', {
+    fetch('https://movie-recommender-z51m.onrender.com/recommend', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
