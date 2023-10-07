@@ -1,6 +1,5 @@
 // Function to make an AJAX request to the backend and display recommendations
 function getRecommendations() {
-    console.log('Function called');
     const movieInput = document.getElementById('movieInput');
     const message = document.querySelector('.message');
     const recommendationsDiv = document.getElementById('recommendations');
@@ -13,7 +12,7 @@ function getRecommendations() {
     // Check if the input is empty
     if (!movieTitle) {
         alert('Please enter a movie title.');
-        message.innerText = ""; // Remove the message
+        message.innerText = ""; // Erase the message
         return;
     }
 

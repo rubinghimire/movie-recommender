@@ -5,7 +5,6 @@ import re
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 app.debug = True
@@ -15,10 +14,6 @@ def load_data():
     # Reading csv into dataframes
     movies_df = pd.read_csv('data/movies.csv')
     ratings_df = pd.read_csv('data/ratings.csv')
-    merged_df = movies_df.merge(ratings_df, on='movieId')
-    # Returning a tuple
-    print(movies_df.head(5))
-    print(ratings_df.head(5))
     return movies_df, ratings_df
 
 
@@ -35,13 +30,11 @@ def recommend():
 
 def find_movie_in_dataframe(movies_df, movie_name):
     matching_movies = movies_df[movies_df['title'] == movie_name]
+    print(f'matching movies {matching_movies}')
     if not matching_movies.empty:
         # Return the first matching movie found
-        print(f'inside if not')
         return matching_movies.iloc[0]
     else:
-        # If no matching movie is found, return None
-        print(f'inside else')
         return None
     # return movies_df[movies_df['title'].str.lower() == movie_name.lower()]
 
@@ -66,10 +59,12 @@ def find_similar_movies(movies_df, ratings_df, movie_name):
 
 
 def recommend_movies(merged_df, movie_name):
+    # Retrieve multiple entries of the given movie in the df
     movies = merged_df[merged_df['title'] == movie_name]
     if movies.empty:
         return []
-    # Sort the values of the movie_ratings df in descending order based on rating
+    # Sort the values of the movies df in descending order based on rating
+    # Assign to movie_ratings
     movie_ratings = movies.sort_values(by='rating', ascending=False)
     # Select the top five users who have given the highest rating to the given movie
     top_users = movie_ratings.iloc[:5]['userId'].values
@@ -128,7 +123,7 @@ def recommend_movies_based_on_genres(movie_name):
     # Calculate the score for each recommended_movie
     for recommended_movie in recommended_movies:
         score = score_movie(movies_df[movies_df['title']
-                            == recommended_movie].iloc[0],
+                                      == recommended_movie].iloc[0],
                             set(movie_in_df['genres'].split('|')))
         # Store the score in scores dictionary
         scores[recommended_movie] = score

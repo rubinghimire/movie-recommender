@@ -1,4 +1,4 @@
-/* Add your CSS styles here */
+/* CSS styles for Movie Recommender */
 body {
     font-family: Arial, sans-serif;
     background-image: url("background.jpeg");
@@ -23,8 +23,26 @@ main {
     border-radius: 5px;
 }
 
+h4 {
+    margin: 8px;
+}
+
+ul {
+    margin: 0;
+}
+
+li {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+
 h5 {
     margin: 0;
+}
+
+hr {
+    color: #DF766A;
 }
 
 .search-box {
@@ -41,8 +59,13 @@ h5 {
 input[type="text"] {
     flex-grow: 1;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: 2px solid #DF766A;
     border-radius: 3px;
+    color: #DF766A;
+}
+
+input[type="text"]:focus {
+    outline: 0.01px solid #DF766A;
 }
 
 button {
