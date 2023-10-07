@@ -29,9 +29,9 @@ function getRecommendations() {
                 recommendationDiv.innerText = `${index + 1}. ${recommendation}`;
                 recommendationsDiv.appendChild(recommendationDiv);
             });
-            element.remove();
         })
         .catch(error => {
             console.error('Error:', error);
         });
+        element.remove();
 }
