@@ -13,24 +13,17 @@ function getRecommendations() {
     }
 
     // Make an AJAX request to the backend (replace 'backend_url' with your actual backend URL)
-    fetch('https://movie-recommender-z51m.onrender.com/recommend/${movieTitle}', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ movie_title: movieTitle })
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Display recommendations in the recommendationsDiv
-        recommendationsDiv.innerHTML = '';
-        data.recommendations.forEach((recommendation, index) => {
-            const recommendationDiv = document.createElement('div');
-            recommendationDiv.innerText = `${index + 1}. ${recommendation}`;
-            recommendationsDiv.appendChild(recommendationDiv);
+    fetch('https://movie-recommender-z51m.onrender.com/recommend/${movieTitle}')
+        .then(response => response.json())
+        .then(data => {
+            // Display recommendations in the recommendationsDiv
+            recommendationsDiv.innerHTML = '';
+            data.recommendations.forEach((recommendation, index) => {
+                const recommendationDiv = document.createElement('div');
+                recommendationDiv.innerText = `${index + 1}. ${recommendation}`;
+                recommendationsDiv.appendChild(recommendationDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
