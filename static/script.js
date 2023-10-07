@@ -2,7 +2,7 @@
 function getRecommendations() {
     console.log('Function called');
     const movieInput = document.getElementById('movieInput');
-    const button = document.getElementByTagName('button');
+    const button = document.getElementsByTagName('button')[0];
     const recommendationsDiv = document.getElementById('recommendations');
 
     // Get the user input (movie title)
