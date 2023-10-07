@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 
 
 app = Flask(__name__)
-
+app.debug = True
 
 def load_data():
     movies_df = pd.read_csv('data/movies.csv')
