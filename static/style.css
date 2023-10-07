@@ -30,6 +30,10 @@ main {
     margin-bottom: 1rem;
 }
 
+.message-box {
+    color: #DF766A;
+}
+
 input[type="text"] {
     flex-grow: 1;
     padding: 0.5rem;
