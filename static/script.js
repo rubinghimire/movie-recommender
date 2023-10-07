@@ -2,15 +2,15 @@
 function getRecommendations() {
     console.log('Function called');
     const movieInput = document.getElementById('movieInput');
-    const searchBox = document.getElementByClass('search-box');
+    const button = document.getElementByTagName('button');
     const recommendationsDiv = document.getElementById('recommendations');
 
     // Get the user input (movie title)
     const movieTitle = movieInput.value.trim();
 
-//    // Append message for user
-//    const element = "<h4>Please wait for the server's response.</h4>";
-//    searchBox.insertAdjacentHTML("afterend", element);
+    // Append message for user
+    const element = "<h4>Please wait for the server's response.</h4>";
+    button.insertAdjacentHTML("afterend", element);
 
     // Check if the input is empty
     if (!movieTitle) {
