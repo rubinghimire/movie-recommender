@@ -14,3 +14,4 @@ otherwise, the server returns a list of similar movies to the input movie calcul
 
 ## Credits
 - [OpenWeaver Community Course](https://community.openweaver.com/t/learn-how-to-build-a-movie-recommendation-system-using-python/1558) for the foundational knowledge used in this app.
+- While the course provided a Jupyter Notebook file as a prototype, I've enhanced the original logic and designed/developed a Python-based web application.
